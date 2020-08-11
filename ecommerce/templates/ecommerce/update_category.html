@@ -1,0 +1,9 @@
+{% extends 'ecommerce/base.html' %}
+{% load crispy_forms_tags %}
+{% block cform %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="buy-now-button">Update Category</button>
+    </form>
+{% endblock cform %}

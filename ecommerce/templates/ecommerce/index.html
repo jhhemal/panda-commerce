@@ -1,0 +1,75 @@
+{% extends 'ecommerce/base.html' %}
+{% load val_filters %}
+
+
+{% block carousel %}
+{% for category in categories %}
+  {% if category.name == 'Heading' %}
+    {% for product in category.products.all %}
+    {{ product.name }}
+      {% if forloop.counter > 1 %}
+        <div class="carousel-item">
+          <div class="row align-items-center">
+              <div class="col-md-7">
+                  <h1>Mega LCD TV for Sports</h1>
+                  <p>This is the best Tv in the world for people who just want to waste time in front of the TV.</p>
+                  <h1 class="price">$1200</h1>
+                  <button class="buy-now-button">Buy Now</button>
+        
+              </div>
+              <div class="col-md-5">
+                <img src="img/banner/tv.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+        </div>
+      {% else %}
+        <div class="carousel-item active">
+          <div class="row align-items-center">
+              <div class="col-md-7">
+                  <h1>Mega LCD TV for Sports</h1>
+                  <p>This is the best Tv in the world for people who just want to waste time in front of the TV.</p>
+                  <h1 class="price">$1200</h1>
+                  <button class="buy-now-button">Buy Now</button>
+        
+              </div>
+              <div class="col-md-5">
+                <img src="img/banner/tv.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+        </div>
+      {% endif %}
+    
+    {% endfor %}
+    
+  {% endif %}
+{% endfor %}
+
+{% endblock carousel %}
+
+{% block categories %}
+  {% for category in categories %}
+    {% if category.name == 'Heading' %}
+    {% else %}
+      <div class="col-md-4">
+        <div class="cat1 align-items-center d-flex justify-content-between">
+          <h1>{{ category.name }}</h1>
+            <img src="{{ category.image.url }}" alt="{{ category.name }}">
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endblock categories %}
+
+{% block products %}
+{% for product in products %}
+  <div class="card">
+    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" height="192px" width="208px">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">{{ product.description }}</p>
+      <h5>${{ product.price }}</h5>
+      <button class="buy-now-button">Buy Now>></button>
+    </div>
+  </div>
+{% endfor %}
+{% endblock products %}
