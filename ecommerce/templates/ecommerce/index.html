@@ -5,20 +5,19 @@
 {% block carousel %}
 {% for category in categories %}
   {% if category.name == 'Heading' %}
-    {% for product in category.products.all %}
-    {{ product.name }}
+    {% for product in category.product_set.all %}
       {% if forloop.counter > 1 %}
         <div class="carousel-item">
           <div class="row align-items-center">
               <div class="col-md-7">
-                  <h1>Mega LCD TV for Sports</h1>
-                  <p>This is the best Tv in the world for people who just want to waste time in front of the TV.</p>
-                  <h1 class="price">$1200</h1>
+                  <h1>{{ product.name }}</h1>
+                  <p>{{ product.description }}</p>
+                  <h1 class="price">${{ product.price }}</h1>
                   <button class="buy-now-button">Buy Now</button>
         
               </div>
               <div class="col-md-5">
-                <img src="img/banner/tv.png" class="d-block w-100" alt="...">
+                <img src="{{ product.image.url }}" class="d-block w-100" alt="...">
               </div>
             </div>
         </div>
@@ -26,14 +25,14 @@
         <div class="carousel-item active">
           <div class="row align-items-center">
               <div class="col-md-7">
-                  <h1>Mega LCD TV for Sports</h1>
-                  <p>This is the best Tv in the world for people who just want to waste time in front of the TV.</p>
-                  <h1 class="price">$1200</h1>
+                  <h1>{{ product.name }}</h1>
+                  <p>{{ product.description }}</p>
+                  <h1 class="price">${{ product.price }}</h1>
                   <button class="buy-now-button">Buy Now</button>
         
               </div>
               <div class="col-md-5">
-                <img src="img/banner/tv.png" class="d-block w-100" alt="...">
+                <img src="{{ product.image.url }}" class="d-block w-100" alt="...">
               </div>
             </div>
         </div>
@@ -68,6 +67,7 @@
       <h5 class="card-title">{{ product.name }}</h5>
       <p class="card-text">{{ product.description }}</p>
       <h5>${{ product.price }}</h5>
+      {{ product.categories }}
       <button class="buy-now-button">Buy Now>></button>
     </div>
   </div>
